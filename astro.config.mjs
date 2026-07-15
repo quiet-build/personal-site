@@ -5,10 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: after the first deploy, set this to the live URL so canonical/OG tags are
-  // absolute — your workers.dev subdomain (personal-site.<your-account>.workers.dev)
-  // or a custom domain once attached in wrangler.jsonc.
-  site: 'https://personal-site.workers.dev',
+  // Live URL — used for absolute canonical/OG/JSON-LD tags.
+  // Update this if you attach a custom domain in wrangler.jsonc.
+  site: 'https://personal-site.matwming114.workers.dev',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
