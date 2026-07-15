@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { buttonVariants } from '@quietbuildlab/ui';
+import { clusters, projects, clusterById } from '../data/projects';
+import GithubPanel from '../components/GithubPanel.astro';
+
+const title = 'Ming — an independent software engineer';
+const description =
+  'Ming is an independent software engineer building small software: browser games for kids, privacy-respecting developer tools, open-source components, and pocket-sized iOS apps. Explore the workshop.';
+
+const visitBtn = buttonVariants({ variant: 'default', size: 'lg' });
+const appStoreBtn = buttonVariants({ variant: 'outline', size: 'lg' });
+
+const marqueeItems = [
+  ['games', 'for small hands'],
+  ['tools', 'that mind their business'],
+  ['open source', 'set free'],
+  ['ios apps', 'that work offline'],
+  ['no ads', 'no tracking'],
+  ['built slowly', 'shipped simply'],
+];
+
+const principles = [
+  {
+    title: 'Ship small things',
+    body: 'A finished small thing beats a grand unfinished one. Everything I make started as a weekend and earned its keep.',
+  },
+  {
+    title: 'Local-first, always',
+    body: 'If it can run in your browser tab or on your device, it should. Your data has no business on my servers.',
+  },
+  {
+    title: 'Play is serious work',
+    body: 'Half of what I build exists to make kids laugh. The games have no ads, no accounts, and no dark patterns — just play.',
+  },
+  {
+    title: 'Quiet software',
+    body: 'No streaks, no notifications begging for attention. Good tools wait patiently and then do their job.',
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <header class="site-header">
+    <a class="wordmark" href="/"><span class="lamp-dot"></span>Ming</a>
+    <nav class="site-nav">
+      <a href="#work">Work</a>
+      <a href="#github">Numbers</a>
+      <a href="#about">About</a>
+      <a href="#principles">Principles</a>
+    </nav>
+  </header>
+
+  <!-- ── 3D hero ─────────────────────────────────────────── -->
+  <section class="hero" aria-label="Interactive 3D workshop and constellation of projects">
+    <canvas id="scene-canvas"></canvas>
+    <div class="hero-vignette"></div>
+
+    <div class="hero-copy">
+      <p class="mono-label hero-kicker">an independent software engineer</p>
+      <h1 class="hero-title display-xl">
+        <span class="line"><span>Hi — I'm Ming.</span></span>
+        <span class="line"><span>I build <em class="glow">quiet machines</em>.</span></span>
+      </h1>
+      <p class="hero-sub">
+        Games, tools, and pocket-sized apps — built slowly, shipped simply. Step into my workshop
+        at the center, or drift out to the rings. Every light here is something real.
+      </p>
+    </div>
+
+    <div class="hero-hint" aria-hidden="true">
+      <span class="mono-label">enter the star · click a light</span>
+      <span class="mono-label">or take the rocket 🚀 to explore</span>
+    </div>
+
+    <!-- navigation console: breadcrumb + zoom -->
+    <div class="scene-hud" id="scene-hud">
+      <div class="hud-path" id="hud-path"></div>
+      <div class="hud-zoom">
+        <button id="hud-zoom-out" aria-label="Zoom out">−</button>
+        <button id="hud-zoom-in" aria-label="Zoom in">+</button>
+      </div>
+    </div>
+
+    <!-- flight-mode progress: only visible while flying -->
+    <div class="sky-charted" id="sky-charted" role="status" aria-live="polite">
+      <span class="mono-label">sky charted</span>
+      <span class="charted-tally"><span id="charted-count">0</span> / <span id="charted-total">5</span></span>
+    </div>
+
+    <a class="scroll-cue" href="#work" aria-label="Scroll to work">
+      <span class="mono-label">descend</span>
+      <span class="stem"></span>
+    </a>
+  </section>
+
+  <!-- tooltip that follows the cursor over the 3D scene -->
+  <div id="scene-tooltip" class="scene-tooltip" role="status">
+    <span class="tip-cluster"></span><span class="tip-name"></span>
+  </div>
+
+  <!-- slide-in detail panel, populated by the scene script -->
+  <aside id="project-panel" class="project-panel" aria-label="Details">
+    <button class="panel-close" aria-label="Close details">×</button>
+    <p class="mono-label panel-cluster"></p>
+    <h2 class="panel-title display-lg"></h2>
+    <p class="panel-blurb"></p>
+    <ul class="panel-tags"></ul>
+    <p class="panel-note"></p>
+    <div class="panel-actions">
+      <a class:list={['panel-visit', visitBtn]} href="#" target="_blank" rel="noopener noreferrer">
+        Visit ↗
+      </a>
+      <a
+        class:list={['panel-appstore', appStoreBtn]}
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="display: none"
+      >
+         App Store
+      </a>
+      <button class:list={['panel-scene-action', visitBtn]} type="button" style="display: none"
+      ></button>
+    </div>
+  </aside>
+
+  <!-- ── Marquee ─────────────────────────────────────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      {
+        [0, 1].map(() =>
+          marqueeItems.map(([head, tail]) => (
+            <span>
+              <b>{head}</b> — {tail}
+            </span>
+          ))
+        )
+      }
+    </div>
+  </div>
+
+  <!-- ── Selected work (crawlable mirror of the constellation) ── -->
+  <section class="section" id="work">
+    <div class="section-head reveal">
+      <span class="index">01</span>
+      <h2 class="display-lg">The constellation, on paper</h2>
+    </div>
+    <div class="work-grid">
+      {
+        projects.map((p, i) => {
+          const cluster = clusterById[p.cluster];
+          const href = p.url ?? p.appStore;
+          const Tag = href ? 'a' : 'div';
+          return (
+            <Tag
+              class="work-card reveal"
+              style={`--card-color: ${cluster.color}; --reveal-delay: ${(i % 3) * 0.08}s`}
+              {...(href ? { href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              <div class="card-top">
+                <span class="card-cluster">{cluster.label}</span>
+                <span class="card-badges">
+                  {p.appStore && <span class="card-appstore"> App Store</span>}
+                  {href && <span class="card-arrow">↗</span>}
+                </span>
+              </div>
+              <h3>{p.title}</h3>
+              <p>{p.blurb}</p>
+              <ul class="card-tags">
+                {p.tags.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            </Tag>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- ── GitHub, in numbers (moved up) ───────────────────── -->
+  <GithubPanel />
+
+  <!-- ── About ───────────────────────────────────────────── -->
+  <section class="section" id="about">
+    <div class="section-head reveal">
+      <span class="index">03</span>
+      <h2 class="display-lg">About Ming</h2>
+    </div>
+    <div class="about-grid">
+      <p class="about-lede reveal">
+        I'm Ming — a software engineer who likes building things that are <em class="glow">small, kind, and finished</em>.
+      </p>
+      <div class="about-body reveal" style="--reveal-delay: 0.12s">
+        <p>
+          By day I'm an engineer; by night I run a one-person workshop. I make three kinds of
+          things: games that make kids laugh, tools that respect your data, and apps that keep
+          working when the internet doesn't.
+        </p>
+        <p>
+          I build with a bias for the small — small scope, small bundles, small promises kept. A
+          lot of it is open source, and all of it is made by hand, late, with a lamp on. I'm most
+          at home somewhere between a game engine and a design system.
+        </p>
+        <p>
+          The four clusters overhead — <span style={`color:${clusterById.arcade.color}`}>Arcade</span>, <span style={`color:${clusterById.toolbench.color}`}>Toolbench</span>, <span style={`color:${clusterById.opensource.color}`}>Open Source</span>, and <span style={`color:${clusterById.pocket.color}`}>Pocket</span> — are my shelves. New lights get hung as new things ship. Poke around; it's meant to be played with.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Principles ──────────────────────────────────────── -->
+  <section class="section" id="principles">
+    <div class="section-head reveal">
+      <span class="index">04</span>
+      <h2 class="display-lg">House rules</h2>
+    </div>
+    <div class="principles">
+      {
+        principles.map((p, i) => (
+          <div class="principle reveal" style={`--reveal-delay: ${i * 0.1}s`}>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span class="mono-label">© {new Date().getFullYear()} Ming · built in the quiet-build workshop</span>
+    <span class="mono-label">
+      made with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> + <a href="https://threejs.org" target="_blank" rel="noopener">Three.js</a> + <a href="https://quiet-build.github.io/ui/" target="_blank" rel="noopener">Manuscript UI</a>
+    </span>
+  </footer>
+
+  <script>
+    import '../scripts/scene';
+
+    // scroll-triggered reveals
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</Layout>

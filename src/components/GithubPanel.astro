@@ -1,0 +1,279 @@
+---
+import { buttonVariants } from '@quietbuildlab/ui';
+import { getGithubStats } from '../lib/github';
+
+const gh = await getGithubStats();
+
+const tiles = [
+  { value: gh.totalRepos, label: 'public repos', hint: 'things set free' },
+  { value: gh.totalStars, label: 'stars earned', hint: 'quietly appreciated' },
+  { value: gh.followers, label: 'followers', hint: 'looking over my shoulder' },
+  { value: gh.activeYears, label: 'years on github', hint: `since ${gh.memberSinceYear}` },
+];
+
+/* cadence chart geometry (server-rendered SVG, animated on reveal) */
+const W = 720;
+const H = 190;
+const PAD = { top: 26, right: 8, bottom: 26, left: 8 };
+const innerW = W - PAD.left - PAD.right;
+const innerH = H - PAD.top - PAD.bottom;
+const maxCount = Math.max(...gh.reposPerYear.map((d) => d.count));
+const n = gh.reposPerYear.length;
+const slot = innerW / n;
+const barW = Math.min(34, slot * 0.55);
+const maxIdx = gh.reposPerYear.findIndex((d) => d.count === maxCount);
+const bars = gh.reposPerYear.map((d, i) => {
+  const h = maxCount === 0 ? 0 : (d.count / maxCount) * innerH;
+  return {
+    ...d,
+    x: PAD.left + slot * i + (slot - barW) / 2,
+    y: PAD.top + innerH - h,
+    h,
+    labeled: i === maxIdx || i === 0 || i === n - 1,
+  };
+});
+
+const outlineBtn = buttonVariants({ variant: 'outline', size: 'default' });
+const INITIAL_REPOS = 5;
+---
+
+<section class="section" id="github">
+  <div class="section-head reveal">
+    <span class="index">02</span>
+    <h2 class="display-lg">Ming, in numbers</h2>
+  </div>
+  <p class="gh-lede reveal">
+    A live-ish snapshot of what I build in the open — pulled from GitHub at build time, across
+    my personal account and the <em class="glow">quiet-build</em> workshop org.
+    {!gh.live && <span class="gh-stale"> (showing a saved snapshot)</span>}
+  </p>
+
+  <!-- stat tiles -->
+  <div class="gh-tiles reveal">
+    {
+      tiles.map((t) => (
+        <div class="gh-tile">
+          <span class="gh-num" data-count={t.value}>
+            0
+          </span>
+          <span class="mono-label gh-tile-label">{t.label}</span>
+          <span class="gh-tile-hint">{t.hint}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="gh-grid">
+    <!-- language composition -->
+    <figure class="gh-card gh-langs reveal" style="--reveal-delay: 0.08s">
+      <figcaption class="mono-label">
+        languages · <span class="gh-accent">{gh.topLanguage}</span> leads
+      </figcaption>
+      <div
+        class="lang-bar"
+        role="img"
+        aria-label={`Language mix across ${gh.totalRepos} public repos: ` +
+          gh.languages.map((l) => `${l.name} ${l.count}`).join(', ')}
+      >
+        {
+          gh.languages.map((l, i) => (
+            <span
+              class="lang-seg"
+              data-lang={l.name}
+              style={`--grow:${l.count}; --seg-delay:${0.3 + i * 0.09}s; background:${l.color}`}
+              title={`${l.name} — ${l.count} repos (${l.pct.toFixed(0)}%)`}
+            />
+          ))
+        }
+      </div>
+      <ul class="lang-legend">
+        {
+          gh.languages.map((l) => (
+            <li data-lang={l.name}>
+              <span class="swatch" style={`background:${l.color}`} />
+              <span class="lang-name">{l.name}</span>
+              <span class="lang-count">{l.count}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </figure>
+
+    <!-- shipping cadence -->
+    <figure class="gh-card gh-cadence reveal" style="--reveal-delay: 0.16s">
+      <figcaption class="mono-label">
+        repos hatched per year · peak <span class="gh-accent">{gh.busiestYear.count}</span> in{' '}
+        {gh.busiestYear.year}
+      </figcaption>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        class="cadence-chart"
+        role="img"
+        aria-label={`Repositories created per year from ${gh.reposPerYear[0].year} to ${gh.reposPerYear[n - 1].year}. Peak: ${maxCount} in ${gh.reposPerYear[maxIdx].year}.`}
+      >
+        <line
+          x1={PAD.left}
+          y1={PAD.top + innerH}
+          x2={W - PAD.right}
+          y2={PAD.top + innerH}
+          class="axis-line"></line>
+        {
+          bars.map((b, i) => (
+            <g class="bar-g" style={`--bar-delay:${0.35 + i * 0.05}s`}>
+              <title>{`${b.year}: ${b.count} repo${b.count === 1 ? '' : 's'}`}</title>
+              <rect
+                x={b.x - (slot - barW) / 2}
+                y={PAD.top}
+                width={slot}
+                height={innerH}
+                fill="transparent"
+              />
+              {b.count > 0 && (
+                <rect
+                  class="bar"
+                  x={b.x}
+                  y={b.y}
+                  width={barW}
+                  height={Math.max(b.h, 3)}
+                  rx="4"
+                  style={`--bh:${Math.max(b.h, 3)}px; transform-origin:${b.x + barW / 2}px ${PAD.top + innerH}px`}
+                />
+              )}
+              <text class="bar-year" x={b.x + barW / 2} y={H - 8} text-anchor="middle">
+                {String(b.year).slice(2)}
+              </text>
+              <text
+                class:list={['bar-value', { labeled: b.labeled }]}
+                x={b.x + barW / 2}
+                y={b.y - 8}
+                text-anchor="middle"
+              >
+                {b.count}
+              </text>
+            </g>
+          ))
+        }
+      </svg>
+    </figure>
+  </div>
+
+  <!-- expandable recent repositories feed -->
+  <figure class="gh-card gh-recent reveal" style="--reveal-delay: 0.2s">
+    <figcaption class="mono-label">recently touched · newest first</figcaption>
+    <ul class="repo-list" id="repo-list">
+      {
+        gh.recent.map((r, i) => (
+          <li class:list={['repo-row', { 'repo-hidden': i >= INITIAL_REPOS }]} style={`--row-delay:${i * 0.05}s`}>
+            <a class="repo-link" href={r.url} target="_blank" rel="noopener noreferrer">
+              <span class="repo-dot" style={`background:${r.langColor}`} />
+              <span class="repo-main">
+                <span class="repo-name">
+                  {r.name}
+                  <span class="repo-go">↗</span>
+                </span>
+                <span class="repo-desc">{r.description}</span>
+              </span>
+              <span class="repo-meta">
+                {r.language && <span class="repo-lang">{r.language}</span>}
+                {r.stars > 0 && <span class="repo-stars">★ {r.stars}</span>}
+                <span class="repo-time">{r.updated}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {
+      gh.recent.length > INITIAL_REPOS && (
+        <button class="repo-toggle" id="repo-toggle" aria-expanded="false">
+          <span class="repo-toggle-more">Show {gh.recent.length - INITIAL_REPOS} more ↓</span>
+          <span class="repo-toggle-less">Collapse ↑</span>
+        </button>
+      )
+    }
+  </figure>
+
+  <div class="gh-actions reveal" style="--reveal-delay: 0.26s">
+    <a
+      class:list={[outlineBtn]}
+      href="https://github.com/ming-undefined"
+      target="_blank"
+      rel="noopener noreferrer">Ming on GitHub ↗</a
+    >
+    <a
+      class:list={[outlineBtn]}
+      href="https://github.com/quiet-build"
+      target="_blank"
+      rel="noopener noreferrer">quiet-build org ↗</a
+    >
+  </div>
+</section>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // count-up on the stat tiles, once, when they scroll into view
+  const nums = document.querySelectorAll<HTMLElement>('.gh-num');
+  const countIO = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        countIO.unobserve(entry.target);
+        const el = entry.target as HTMLElement;
+        const target = Number(el.dataset.count ?? '0');
+        if (reduce) {
+          el.textContent = String(target);
+          continue;
+        }
+        const t0 = performance.now();
+        const dur = 1300;
+        const tick = (t: number) => {
+          const p = Math.min((t - t0) / dur, 1);
+          el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    },
+    { threshold: 0.4 }
+  );
+  nums.forEach((el) => countIO.observe(el));
+
+  // trigger bar/segment grow-in animations when the charts enter view
+  const growIO = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('charged');
+          growIO.unobserve(entry.target);
+        }
+      }
+    },
+    { threshold: 0.3 }
+  );
+  document.querySelectorAll('.gh-langs, .gh-cadence').forEach((el) => growIO.observe(el));
+
+  // legend ↔ bar cross-highlight
+  const langCards = document.querySelectorAll('.gh-langs');
+  langCards.forEach((card) => {
+    const setActive = (lang: string | null) => {
+      card.querySelectorAll<HTMLElement>('[data-lang]').forEach((el) => {
+        el.classList.toggle('dimmed', lang !== null && el.dataset.lang !== lang);
+      });
+    };
+    card.querySelectorAll<HTMLElement>('[data-lang]').forEach((el) => {
+      el.addEventListener('mouseenter', () => setActive(el.dataset.lang ?? null));
+      el.addEventListener('mouseleave', () => setActive(null));
+    });
+  });
+
+  // expandable repo list
+  const toggle = document.getElementById('repo-toggle');
+  const list = document.getElementById('repo-list');
+  if (toggle && list) {
+    toggle.addEventListener('click', () => {
+      const expanded = list.classList.toggle('expanded');
+      toggle.setAttribute('aria-expanded', String(expanded));
+    });
+  }
+</script>

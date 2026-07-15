@@ -1,0 +1,468 @@
+{
+ "fetchedAt": "2026-07-15",
+ "user": "ming-undefined",
+ "org": "quiet-build",
+ "followers": 36,
+ "memberSince": "2014-07-14",
+ "repos": [
+  {
+   "name": "A-flutter-app",
+   "full_name": "ming-undefined/A-flutter-app",
+   "language": "Dart",
+   "stars": 0,
+   "created_at": "2019-01-09T01:50:08Z",
+   "pushed_at": "2019-01-18T06:38:58Z",
+   "description": "a flutter app just for fun"
+  },
+  {
+   "name": "algorithm",
+   "full_name": "ming-undefined/algorithm",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-09-27T13:35:33Z",
+   "pushed_at": "2020-02-15T02:38:29Z",
+   "description": "algorithm questions and solutions written in javascript, python and java"
+  },
+  {
+   "name": "appsyncmasterclass-backend",
+   "full_name": "ming-undefined/appsyncmasterclass-backend",
+   "language": null,
+   "stars": 1,
+   "created_at": "2022-04-28T11:58:28Z",
+   "pushed_at": "2022-04-28T11:58:30Z",
+   "description": null
+  },
+  {
+   "name": "build-github-with-nextjs",
+   "full_name": "ming-undefined/build-github-with-nextjs",
+   "language": null,
+   "stars": 0,
+   "created_at": "2019-10-08T06:24:42Z",
+   "pushed_at": "2019-10-08T06:24:42Z",
+   "description": "a github app built with nextjs,redux,koa"
+  },
+  {
+   "name": "burger_app",
+   "full_name": "ming-undefined/burger_app",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2018-11-25T06:40:38Z",
+   "pushed_at": "2019-03-19T00:04:33Z",
+   "description": "A simple online burger order app using React, React Router,Redux as front end technology and nodejs as the back-end."
+  },
+  {
+   "name": "codetest",
+   "full_name": "ming-undefined/codetest",
+   "language": "JavaScript",
+   "stars": 2,
+   "created_at": "2019-04-07T14:24:13Z",
+   "pushed_at": "2021-01-05T07:44:28Z",
+   "description": null
+  },
+  {
+   "name": "codetest2",
+   "full_name": "ming-undefined/codetest2",
+   "language": "TypeScript",
+   "stars": 2,
+   "created_at": "2020-01-03T12:26:18Z",
+   "pushed_at": "2023-01-05T04:51:47Z",
+   "description": null
+  },
+  {
+   "name": "complete_jest_and_enzyme",
+   "full_name": "ming-undefined/complete_jest_and_enzyme",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-04-16T04:14:06Z",
+   "pushed_at": "2019-04-16T04:14:59Z",
+   "description": null
+  },
+  {
+   "name": "dev-connector_frontEnd",
+   "full_name": "ming-undefined/dev-connector_frontEnd",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-03-01T12:25:12Z",
+   "pushed_at": "2019-03-21T04:11:57Z",
+   "description": null
+  },
+  {
+   "name": "devconnected_backEnd",
+   "full_name": "ming-undefined/devconnected_backEnd",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-02-21T04:50:34Z",
+   "pushed_at": "2019-03-20T09:34:23Z",
+   "description": null
+  },
+  {
+   "name": "devconnector_start",
+   "full_name": "ming-undefined/devconnector_start",
+   "language": null,
+   "stars": 0,
+   "created_at": "2019-04-24T01:22:19Z",
+   "pushed_at": "2019-04-24T01:22:20Z",
+   "description": "react,redux,router,nodejs,express,mongoDB"
+  },
+  {
+   "name": "docker_example",
+   "full_name": "ming-undefined/docker_example",
+   "language": "TypeScript",
+   "stars": 1,
+   "created_at": "2020-03-12T11:52:34Z",
+   "pushed_at": "2022-12-12T05:00:40Z",
+   "description": null
+  },
+  {
+   "name": "homework",
+   "full_name": "ming-undefined/homework",
+   "language": "Python",
+   "stars": 1,
+   "created_at": "2020-09-01T14:16:38Z",
+   "pushed_at": "2020-09-10T14:59:13Z",
+   "description": null
+  },
+  {
+   "name": "kynd-test",
+   "full_name": "ming-undefined/kynd-test",
+   "language": "Vue",
+   "stars": 1,
+   "created_at": "2023-10-16T10:24:00Z",
+   "pushed_at": "2023-10-22T13:03:42Z",
+   "description": "a code test solution"
+  },
+  {
+   "name": "lit-talk-oauth-proxy",
+   "full_name": "ming-undefined/lit-talk-oauth-proxy",
+   "language": "TypeScript",
+   "stars": 0,
+   "created_at": "2026-03-01T11:25:44Z",
+   "pushed_at": "2026-03-01T11:25:47Z",
+   "description": null
+  },
+  {
+   "name": "myDNAProject",
+   "full_name": "ming-undefined/myDNAProject",
+   "language": "TypeScript",
+   "stars": 2,
+   "created_at": "2021-04-11T22:17:35Z",
+   "pushed_at": "2021-04-11T22:59:03Z",
+   "description": "this a code test"
+  },
+  {
+   "name": "NativeiOSApp",
+   "full_name": "ming-undefined/NativeiOSApp",
+   "language": "Swift",
+   "stars": 0,
+   "created_at": "2020-02-16T12:15:29Z",
+   "pushed_at": "2020-02-17T10:12:13Z",
+   "description": "no flutter,no react native, a native swift ios app"
+  },
+  {
+   "name": "node-express-template",
+   "full_name": "ming-undefined/node-express-template",
+   "language": "TypeScript",
+   "stars": 1,
+   "created_at": "2020-02-16T23:00:56Z",
+   "pushed_at": "2021-10-31T02:20:57Z",
+   "description": "a basic nodejs setup with typescript including basic folder structures"
+  },
+  {
+   "name": "nodejs-examples",
+   "full_name": "ming-undefined/nodejs-examples",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-01-29T06:24:31Z",
+   "pushed_at": "2019-01-29T06:26:18Z",
+   "description": "nodejs examples "
+  },
+  {
+   "name": "online-eshop",
+   "full_name": "ming-undefined/online-eshop",
+   "language": "TypeScript",
+   "stars": 0,
+   "created_at": "2025-10-12T02:40:15Z",
+   "pushed_at": "2025-10-26T12:32:23Z",
+   "description": "a cbus eshop codetest"
+  },
+  {
+   "name": "online_shopping_example",
+   "full_name": "ming-undefined/online_shopping_example",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-01-07T06:44:50Z",
+   "pushed_at": "2019-02-15T06:58:59Z",
+   "description": "online shopping website using react, graphql, nextjs. NO React Router or Redux!!"
+  },
+  {
+   "name": "playaround_with_redux",
+   "full_name": "ming-undefined/playaround_with_redux",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-03-19T12:38:21Z",
+   "pushed_at": "2019-03-19T12:39:38Z",
+   "description": "this is a counter example with react, redux and thunk middleware"
+  },
+  {
+   "name": "Qantas-Code-Test",
+   "full_name": "ming-undefined/Qantas-Code-Test",
+   "language": null,
+   "stars": 0,
+   "created_at": "2020-08-10T05:38:16Z",
+   "pushed_at": "2019-06-12T01:46:09Z",
+   "description": null
+  },
+  {
+   "name": "quick-utils",
+   "full_name": "ming-undefined/quick-utils",
+   "language": null,
+   "stars": 1,
+   "created_at": "2020-12-15T11:06:23Z",
+   "pushed_at": "2020-12-15T11:06:25Z",
+   "description": null
+  },
+  {
+   "name": "react-native-template",
+   "full_name": "ming-undefined/react-native-template",
+   "language": "TypeScript",
+   "stars": 1,
+   "created_at": "2019-10-06T22:44:40Z",
+   "pushed_at": "2023-01-04T22:14:26Z",
+   "description": "This is a simple react native app pre-configured with typescript, react navigation,redux (thunk) and stypled-components."
+  },
+  {
+   "name": "react-template",
+   "full_name": "ming-undefined/react-template",
+   "language": "TypeScript",
+   "stars": 2,
+   "created_at": "2019-10-04T03:27:36Z",
+   "pushed_at": "2023-03-07T01:28:32Z",
+   "description": "This is a pre-configured react app with typescript, axios, react-router,redux(thunk) and styled-components"
+  },
+  {
+   "name": "react-useSyncExternalStore-example",
+   "full_name": "ming-undefined/react-useSyncExternalStore-example",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2024-03-31T06:53:59Z",
+   "pushed_at": "2024-03-31T06:55:04Z",
+   "description": "learn how to use useSyncExternalStore with code examples"
+  },
+  {
+   "name": "reactive-react",
+   "full_name": "ming-undefined/reactive-react",
+   "language": "TypeScript",
+   "stars": 2,
+   "created_at": "2022-07-05T04:16:53Z",
+   "pushed_at": "2022-10-28T02:41:44Z",
+   "description": "a few hooks that work with rxjs in react"
+  },
+  {
+   "name": "reactive-react-hooks-docs",
+   "full_name": "ming-undefined/reactive-react-hooks-docs",
+   "language": "TypeScript",
+   "stars": 1,
+   "created_at": "2022-10-28T05:01:14Z",
+   "pushed_at": "2022-11-05T05:17:05Z",
+   "description": null
+  },
+  {
+   "name": "Real-time-Video-Chat-App-with-Twilio-and-Gatsby",
+   "full_name": "ming-undefined/Real-time-Video-Chat-App-with-Twilio-and-Gatsby",
+   "language": "JavaScript",
+   "stars": 1,
+   "created_at": "2019-10-29T17:43:17Z",
+   "pushed_at": "2023-01-04T23:42:37Z",
+   "description": null
+  },
+  {
+   "name": "recipe-app-api",
+   "full_name": "ming-undefined/recipe-app-api",
+   "language": "Python",
+   "stars": 1,
+   "created_at": "2020-04-08T02:26:43Z",
+   "pushed_at": "2020-04-08T03:29:29Z",
+   "description": null
+  },
+  {
+   "name": "RefactorThis",
+   "full_name": "ming-undefined/RefactorThis",
+   "language": "C#",
+   "stars": 2,
+   "created_at": "2021-05-08T13:21:51Z",
+   "pushed_at": "2021-05-08T13:21:56Z",
+   "description": "c#/.net core poorly written rest apis"
+  },
+  {
+   "name": "serverless-workshop",
+   "full_name": "ming-undefined/serverless-workshop",
+   "language": "HTML",
+   "stars": 1,
+   "created_at": "2023-01-20T21:19:06Z",
+   "pushed_at": "2023-01-20T21:25:01Z",
+   "description": null
+  },
+  {
+   "name": "service-worker-playground",
+   "full_name": "ming-undefined/service-worker-playground",
+   "language": "HTML",
+   "stars": 0,
+   "created_at": "2019-10-23T22:40:12Z",
+   "pushed_at": "2019-10-29T00:35:58Z",
+   "description": null
+  },
+  {
+   "name": "skinet",
+   "full_name": "ming-undefined/skinet",
+   "language": "C#",
+   "stars": 1,
+   "created_at": "2020-06-19T11:32:01Z",
+   "pushed_at": "2020-06-30T23:15:36Z",
+   "description": null
+  },
+  {
+   "name": "solidity-example",
+   "full_name": "ming-undefined/solidity-example",
+   "language": "JavaScript",
+   "stars": 1,
+   "created_at": "2022-01-07T02:02:50Z",
+   "pushed_at": "2022-01-07T02:15:50Z",
+   "description": null
+  },
+  {
+   "name": "spring-boot-start",
+   "full_name": "ming-undefined/spring-boot-start",
+   "language": "Java",
+   "stars": 1,
+   "created_at": "2022-01-14T05:58:21Z",
+   "pushed_at": "2022-01-14T05:58:51Z",
+   "description": null
+  },
+  {
+   "name": "TodoList-with-Vue",
+   "full_name": "ming-undefined/TodoList-with-Vue",
+   "language": "Vue",
+   "stars": 0,
+   "created_at": "2019-02-09T12:04:40Z",
+   "pushed_at": "2019-02-18T01:29:58Z",
+   "description": "A TodoList App built with Vue"
+  },
+  {
+   "name": "TrialOfTheGrasses",
+   "full_name": "ming-undefined/TrialOfTheGrasses",
+   "language": null,
+   "stars": 1,
+   "created_at": "2020-02-05T22:49:47Z",
+   "pushed_at": "2020-01-26T02:10:10Z",
+   "description": ":beginner: Developer Trials \u7a0b\u5e8f\u5458\u9752\u8349\u8bd5\u70bc"
+  },
+  {
+   "name": "video-upload-nodejs",
+   "full_name": "ming-undefined/video-upload-nodejs",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-04-14T23:52:43Z",
+   "pushed_at": "2019-04-14T23:59:22Z",
+   "description": null
+  },
+  {
+   "name": "weatherapp",
+   "full_name": "ming-undefined/weatherapp",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2019-04-23T05:42:37Z",
+   "pushed_at": "2019-04-23T05:44:06Z",
+   "description": "a simple weather app built with express and handlebar. Deployed in heroku"
+  },
+  {
+   "name": "zeller-customer-graphql-test",
+   "full_name": "ming-undefined/zeller-customer-graphql-test",
+   "language": "TypeScript",
+   "stars": 2,
+   "created_at": "2022-06-13T03:54:23Z",
+   "pushed_at": "2022-06-13T03:57:24Z",
+   "description": "this is a code test from Zeller."
+  },
+  {
+   "name": "litTalk",
+   "full_name": "quiet-build/litTalk",
+   "language": "TypeScript",
+   "stars": 0,
+   "created_at": "2025-07-15T01:37:19Z",
+   "pushed_at": "2026-07-10T07:46:31Z",
+   "description": "A simple comment plugin with github issues"
+  },
+  {
+   "name": "candy-snake",
+   "full_name": "quiet-build/candy-snake",
+   "language": "TypeScript",
+   "stars": 0,
+   "created_at": "2026-04-26T01:56:40Z",
+   "pushed_at": "2026-07-10T07:29:24Z",
+   "description": "Candy Snake \u2014 a polished snake game for kids, Phaser 3 + TS + Vite, deployed to Cloudflare Pages"
+  },
+  {
+   "name": "flappy-3d",
+   "full_name": "quiet-build/flappy-3d",
+   "language": "TypeScript",
+   "stars": 0,
+   "created_at": "2026-04-29T05:16:44Z",
+   "pushed_at": "2026-07-10T07:46:08Z",
+   "description": null
+  },
+  {
+   "name": "kids-defense-arcade",
+   "full_name": "quiet-build/kids-defense-arcade",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2026-05-03T11:59:30Z",
+   "pushed_at": "2026-07-10T07:46:20Z",
+   "description": null
+  },
+  {
+   "name": "ui",
+   "full_name": "quiet-build/ui",
+   "language": "TypeScript",
+   "stars": 0,
+   "created_at": "2026-05-15T13:20:53Z",
+   "pushed_at": "2026-07-10T07:29:12Z",
+   "description": "Shared UI components for quietbuildlab apps \u2014 the Manuscript design system"
+  },
+  {
+   "name": ".github",
+   "full_name": "quiet-build/.github",
+   "language": null,
+   "stars": 0,
+   "created_at": "2026-05-23T02:54:07Z",
+   "pushed_at": "2026-06-13T01:30:23Z",
+   "description": "Org-level reusable workflows and community files"
+  },
+  {
+   "name": "my-blog",
+   "full_name": "quiet-build/my-blog",
+   "language": "Astro",
+   "stars": 0,
+   "created_at": "2026-05-30T08:01:21Z",
+   "pushed_at": "2026-07-10T07:46:43Z",
+   "description": null
+  },
+  {
+   "name": "skills",
+   "full_name": "quiet-build/skills",
+   "language": null,
+   "stars": 0,
+   "created_at": "2026-06-07T02:28:51Z",
+   "pushed_at": "2026-07-10T07:29:20Z",
+   "description": "Reusable AI-agent skills maintained by quiet-build. Install: npx skills@latest add quiet-build/skills"
+  },
+  {
+   "name": "whiteboard",
+   "full_name": "quiet-build/whiteboard",
+   "language": "JavaScript",
+   "stars": 0,
+   "created_at": "2026-07-02T09:50:09Z",
+   "pushed_at": "2026-07-10T07:29:32Z",
+   "description": null
+  }
+ ]
+}
