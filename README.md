@@ -107,8 +107,9 @@ Hero (3D) → Work grid (01) → **GitHub numbers (02)** → About Ming (03) →
 
 ## TODO before deploy
 
-- Set the real domain in `astro.config.mjs` (`site` is a placeholder — update before sitemaps/canonicals).
-- Deploy via GitHub Actions / CI (house rule: no manual production deploys). CI has network, so
+- `astro.config.mjs` now sets `site` to `https://personal-site.matwming114.workers.dev`;
+  change it only when a different canonical domain is chosen. Live domain status was not checked in the 2026-10-02 source audit.
+- Verify the existing GitHub Actions deploy workflow and its result (house rule: no manual production deploys). CI has network, so
   the GitHub panel fetches live there; the snapshot is only a fallback.
 - Optional: OG image, `@astrojs/sitemap` once the domain is real.
 
