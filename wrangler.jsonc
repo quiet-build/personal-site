@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "personal-site",
+  "workers_dev": true,
   "compatibility_date": "2026-07-15",
   // Static site: Astro builds to ./dist and Cloudflare serves it as Worker assets.
   "routes": [{ "pattern": "me.underreacted.org", "custom_domain": true }],
