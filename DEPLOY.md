@@ -6,8 +6,8 @@ never by manual `wrangler deploy`. Pushing to `main` runs
 `pnpm build`, and deploys `./dist` with `cloudflare/wrangler-action`.
 
 Config lives in [`wrangler.jsonc`](wrangler.jsonc) (Worker name `personal-site`,
-assets from `./dist`). No custom domain yet — it serves from the account's
-`*.workers.dev` subdomain.
+assets from `./dist`). The custom domain is **https://me.underreacted.org**.
+The `*.workers.dev` address remains available.
 
 ## One-time setup (required before the first deploy succeeds)
 

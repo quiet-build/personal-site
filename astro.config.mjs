@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   // Live URL — used for absolute canonical/OG/JSON-LD tags.
   // Update this if you attach a custom domain in wrangler.jsonc.
-  site: 'https://personal-site.matwming114.workers.dev',
+  site: 'https://me.underreacted.org',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
